@@ -1,0 +1,28 @@
+# ---------- 依赖与构建产物 ----------
+node_modules/
+dist/
+src-tauri/target/
+src-tauri/gen/schemas/
+
+# ---------- 本地环境 ----------
+.env
+.env.*
+!.env.example
+
+# ---------- 编辑器 / 系统 ----------
+.vscode/
+.idea/
+.claude/
+*.swp
+*.log
+*.tmp
+Thumbs.db
+.DS_Store
+
+# ---------- 验证与演示产物 ----------
+shots/
+*.exe
+*.msi
+
+# ---------- 内部工作区数据（不属于项目源码） ----------
+.workbuddy/

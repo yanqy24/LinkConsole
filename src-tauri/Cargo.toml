@@ -1,0 +1,47 @@
+[package]
+name = "linkconsole"
+version = "1.0.0"
+description = "LinkConsole — 远程连接与管理 Linux 服务器的 Shell 工具客户端"
+authors = ["LinkConsole"]
+license = "MIT"
+edition = "2021"
+rust-version = "1.77.2"
+
+[lib]
+name = "linkconsole_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["devtools"] }
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
+tauri-plugin-clipboard-manager = "2"
+
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+bytes = "1"
+once_cell = "1"
+log = { version = "0.4", features = ["std"] }
+parking_lot = "0.12"
+chrono = "0.4"
+
+tokio = { version = "1", features = ["full"] }
+futures = "0.3"
+
+# 纯 Rust SSH 协议栈。禁用默认的 aws-lc-rs（依赖 cmake/nasm），改用 ring 后端。
+russh = { version = "0.63.3", default-features = false, features = ["flate2", "ring", "rsa"] }
+russh-sftp = "3.0.1"
+tauri-plugin-decorum = "1.1.1"
+window-vibrancy = "0.8.1"
+webview2-com = "0.39"
+windows-core = "0.62"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

@@ -1,0 +1,61 @@
+/* 终端区域 / xterm 集成 / 本轮新增控件样式 */
+
+/* ---------- 终端容器 ---------- */
+.term{position:relative;overflow:hidden;background:var(--term-bg)}
+/* 注意：宿主不能有 padding —— FitAddon 以父容器计算高度为可用空间，
+   padding 会导致行/列数偏多，最后一行/列被裁掉并产生光标偏移 */
+.term-host{position:absolute;inset:0}
+.term-host .xterm{height:100%}
+.term-host[hidden]{display:none}
+
+/* 离屏终端缓冲池：保持布局以支持测量，但不可见 */
+#termPool{position:fixed;left:-20000px;top:0;width:1000px;height:640px;visibility:hidden;pointer-events:none}
+#termPool .pool-wrap{width:1000px;height:640px}
+
+/* 空状态 */
+.term-empty{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;color:var(--text-faint);user-select:none;
+}
+.term-empty[hidden]{display:none}
+.term-empty .te-logo{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;
+  background:var(--panel-2);border:1px solid var(--border);color:var(--accent-2);margin-bottom:6px}
+.term-empty .te-logo svg{width:26px;height:26px}
+.term-empty .te-title{font-size:13.5px;color:var(--text-dim);font-weight:550}
+.term-empty .te-sub{font-size:11.5px}
+.term-empty .te-sub b{color:var(--accent-2);font-weight:550}
+
+/* xterm 内部细节：viewport 透明以透出终端底色，滚动条细窄 */
+.xterm .xterm-viewport{background:transparent !important;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}
+.xterm .xterm-viewport::-webkit-scrollbar{width:9px}
+
+/* ---------- 未读提示 ---------- */
+.sess-name{position:relative;display:flex;align-items:center;gap:5px}
+.unread{
+  width:6px;height:6px;border-radius:50%;flex:none;background:var(--accent-2);
+  box-shadow:0 0 0 3px rgba(91,140,255,.18);animation:pulse 1.6s ease infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.sess-close{opacity:0;transition:.15s}
+.sess-card:hover .sess-close{opacity:.8}
+
+/* ---------- 传输条目 ---------- */
+.fp-tr{display:flex;align-items:center;gap:8px;padding:6px 12px;font-size:11px;border-bottom:1px solid var(--border)}
+.fp-tr .tr-dir{color:var(--text-faint);flex:none}
+.fp-tr .tr-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--mono)}
+.fp-tr .tr-st{color:var(--green);flex:none}
+
+/* ---------- 选择卡片（多控） ---------- */
+.pick-item.dim{opacity:.55}
+
+/* ---------- 树分组计数 ---------- */
+.tree-group-head .g-count{
+  font-size:10px;color:var(--text-faint);font-family:var(--mono);flex:none;padding:0 4px;
+}
+.tree-group-head .g-add{margin-left:2px;opacity:0}
+.tree-group-head:hover .g-add{opacity:.9}
+
+/* ---------- xterm 主题联动 ---------- */
+html[data-pure="true"] .term{background:#000}
+html[data-pure="true"] .term-host{background:#000}
+html[data-theme="light"] .term{background:#fff}

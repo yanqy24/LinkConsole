@@ -214,7 +214,11 @@ html[data-theme="light"] .ico-sun{display:block}
 .col-head:hover .mini-btn.col-collapse{opacity:.85}
 .mini-btn svg{width:14px;height:14px}
 .mini-btn:hover{background:var(--panel-3);color:var(--text)}
-.col-scroll{flex:1;overflow-y:auto;overflow-x:hidden;padding:6px 6px 10px;scrollbar-gutter:stable}
+/* both-edges：左右对称预留滚动条槽位，保证列内内容（会话卡片 / 树）水平居中；
+   只用 stable 会单侧留白，卡片整体偏左。
+   scrollbar-color:auto 让下方 ::-webkit-scrollbar 的 8px 自定义宽度生效，
+   否则标准滚动条占 15px，两侧留白过大。 */
+.col-scroll{flex:1;overflow-y:auto;overflow-x:hidden;padding:6px 6px 10px;scrollbar-gutter:stable both-edges;scrollbar-color:auto}
 .col-foot{
   flex:0 0 28px;display:flex;align-items:center;gap:6px;padding:0 12px;font-size:10.5px;color:var(--text-faint);
   border-top:1px solid var(--border);background:var(--panel);
@@ -966,7 +970,8 @@ html[data-theme="light"] .win-btn:active{background:rgba(16,24,40,.09)}
 .count{padding:1px 7px;border:1px solid var(--border-soft);background:var(--panel-2)}
 .mini-btn{border-radius:7px}
 .mini-btn:hover{background:var(--panel-3)}
-.col-scroll{padding:8px 8px 12px}
+/* 左右各 4px 内边距 + 8px 对称槽位 = 12px，约为原 23px 的一半 */
+.col-scroll{padding:4px 4px 12px}
 .col-foot{flex:0 0 30px;height:30px;padding:0 13px;letter-spacing:.1px}
 .col-rail{gap:12px}
 .col-rail:hover{background:var(--panel-2)}

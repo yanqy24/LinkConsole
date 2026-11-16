@@ -18,7 +18,7 @@ const FONTS = [
 
 export async function settingsModal() {
   const s = state.settings;
-  let info = { version: '1.0.0', platform: '-', ssh: '-' };
+  let info = { version: '1.1.0', platform: '-', ssh: '-' };
   try { info = await invoke('app_info'); } catch (_) {}
 
   const mask = openModal(
@@ -138,7 +138,7 @@ export async function settingsModal() {
 }
 
 export async function aboutModal() {
-  let info = { version: '1.0.0', platform: '-', arch: '-', ssh: '-' };
+  let info = { version: '1.1.0', platform: '-', arch: '-', ssh: '-' };
   try { info = await invoke('app_info'); } catch (_) {}
   const mask = openModal(
     '<div class="about-box"><span class="srv-avatar" style="width:46px;height:46px;border-radius:13px;font-size:16px">LC</span>' +

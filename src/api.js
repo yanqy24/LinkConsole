@@ -164,7 +164,7 @@ async function mockInvoke(cmd, args) {
   switch (cmd) {
     case 'store_load': return mock.config || {};
     case 'store_save': mock.config = args.config; return true;
-    case 'app_info': return { name: 'LinkConsole', version: '1.0.0 (browser demo)', platform: 'web', arch: '-', ssh: 'mock' };
+    case 'app_info': return { name: 'LinkConsole', version: '1.1.0 (browser demo)', platform: 'web', arch: '-', ssh: 'mock' };
     case 'default_download_dir': return 'C:\\Users\\demo\\Downloads';
     case 'ssh_connect': {
       const id = 'mock-' + mock.seq++;

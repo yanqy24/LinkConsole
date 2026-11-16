@@ -1,6 +1,6 @@
 [package]
 name = "linkconsole"
-version = "1.0.0"
+version = "1.1.0"
 description = "LinkConsole — 远程连接与管理 Linux 服务器的 Shell 工具客户端"
 authors = ["LinkConsole"]
 license = "MIT"

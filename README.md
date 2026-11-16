@@ -3,7 +3,7 @@
 > 面向 Linux 运维的 Windows 桌面 SSH 工作台：支持卡片会话预览，多服务器命令批量执行。
 
 <p>  
-  <img alt="version" src="https://img.shields.io/badge/version-1.0.0-blue" />  
+  <img alt="version" src="https://img.shields.io/badge/version-1.1.0-blue" />  
   <img alt="platform" src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D4" />  
   <img alt="tauri" src="https://img.shields.io/badge/Tauri-2-orange" />  
   <img alt="rust" src="https://img.shields.io/badge/Rust-1.77%2B-b7410e" />  
@@ -97,7 +97,7 @@ LinkConsole 是一个用 **Rust + Tauri 2 + xterm.js** 构建的 Windows 桌面�
 
 ### 方式一：安装包（推荐）
 
-1. 从 [Releases](../../releases) 下载 `LinkConsole_1.0.0_x64-setup.exe`。
+1. 从 [Releases](../../releases) 下载 `LinkConsole_1.1.0_x64-setup.exe`。
 2. 双击安装（当前用户级安装，无需管理员权限）。
 3. 首次启动会自动检测 WebView2 运行时；缺失时安装器会联网下载引导程序。
 
@@ -137,7 +137,7 @@ build-and-run.bat clean
 ```bash
 npm install
 npm run tauri build          # 产物：src-tauri/target/release/linkconsole.exe
-                             #       src-tauri/target/release/bundle/nsis/LinkConsole_1.0.0_x64-setup.exe
+                             #       src-tauri/target/release/bundle/nsis/LinkConsole_1.1.0_x64-setup.exe
 ```
 
 首次编译 Rust 依赖约需 3–5 分钟，之后增量构建通常在 30 秒内。构建产物：
@@ -145,7 +145,7 @@ npm run tauri build          # 产物：src-tauri/target/release/linkconsole.exe
 | 产物       | 路径                                                                     |
 | -------- | ---------------------------------------------------------------------- |
 | 单文件 exe  | `src-tauri\target\release\linkconsole.exe`                             |
-| NSIS 安装包 | `src-tauri\target\release\bundle\nsis\LinkConsole_1.0.0_x64-setup.exe` |
+| NSIS 安装包 | `src-tauri\target\release\bundle\nsis\LinkConsole_1.1.0_x64-setup.exe` |
 
 ---
 
